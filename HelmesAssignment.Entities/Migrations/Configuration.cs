@@ -15,7 +15,7 @@ namespace HelmesAssignment.Entities.Migrations
             ContextKey = "HelmesAssignment.DataLayer.ApplicationDbContext";
         }
 
-        protected override void Seed(HelmesAssignment.DataLayer.ApplicationDbContext context)
+        protected override void Seed(DataLayer.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
