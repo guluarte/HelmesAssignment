@@ -1,29 +1,25 @@
-﻿using System;
+﻿using HelmesAssignment.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace HelmesAssignment.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        public ActionResult Index()
+        private readonly ISectorService _sectorService;
+
+        public HomeController(ISectorService sectorService)
         {
-            return View();
+            _sectorService = sectorService;
         }
 
-        public ActionResult About()
+        public async Task<ActionResult> Index()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+            var sectorsViewModels = await _sectorService.GetSectorsAsATree();
             return View();
         }
     }

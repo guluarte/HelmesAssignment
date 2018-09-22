@@ -41,6 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SectorsService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelmesAssignment.Entities\HelmesAssignment.Entities.csproj">
+      <Project>{98B33BBD-352E-40C8-94BB-8F8ACF1DCA12}</Project>
+      <Name>HelmesAssignment.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelmesAssignment.Interfaces\HelmesAssignment.Interfaces.csproj">
+      <Project>{8C085698-F23A-4561-A2E1-7916332FC8A7}</Project>
+      <Name>HelmesAssignment.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,17 @@
+using HelmesAssignment.DataLayer;
+using HelmesAssignment.Entities.Models;
+using HelmesAssignment.Entities.Repositories;
+using HelmesAssignment.Interfaces;
+using HelmesAssignment.Services;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System;
-
+using System.Web;
 using Unity;
+using Unity.AspNet.Mvc;
+using Unity.Injection;
 
 namespace HelmesAssignment.Web
 {
@@ -42,6 +53,16 @@ namespace HelmesAssignment.Web
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            container.RegisterType(typeof(ApplicationDbContext), new PerRequestLifetimeManager());
+
+            container.RegisterType<IAuthenticationManager>(new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
+            container.RegisterType<ApplicationUserManager>(new InjectionFactory(c => HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()));
+            // container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new InjectionConstructor(typeof(ApplicationDbContext)));
+
+            container.RegisterType<ISectorReadRepository, SectorReadRepository>();
+            container.RegisterType<ISectorService, SectorsService>();
+            
         }
     }
 }

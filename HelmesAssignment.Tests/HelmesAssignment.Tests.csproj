@@ -93,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HelmesAssignment.Interfaces\HelmesAssignment.Interfaces.csproj">
+      <Project>{8C085698-F23A-4561-A2E1-7916332FC8A7}</Project>
+      <Name>HelmesAssignment.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelmesAssignment.Web\HelmesAssignment.Web.csproj">
       <Project>{C401EFBE-105F-4DFF-A4B5-5E16DA7B45ED}</Project>
       <Name>HelmesAssignment.Web</Name>

@@ -189,33 +189,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201809210543028_InitialCreate.cs" />
-    <Compile Include="Migrations\201809210543028_InitialCreate.Designer.cs">
-      <DependentUpon>201809210543028_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809210706203_BaseTables.cs" />
-    <Compile Include="Migrations\201809210706203_BaseTables.Designer.cs">
-      <DependentUpon>201809210706203_BaseTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Sector.cs" />
+    <Compile Include="Models\SectorViewModel.cs" />
     <Compile Include="Models\Submission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809210543028_InitialCreate.resx">
-      <DependentUpon>201809210543028_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809210706203_BaseTables.resx">
-      <DependentUpon>201809210706203_BaseTables.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
