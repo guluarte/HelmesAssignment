@@ -11,19 +11,26 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Name)
                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "help-block" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.SelectedSectors)
                 @Html.DropDownListFor(m => m.SelectedSectors, Model.Sectors, new { multiple = "multiple", @class = "form-control full-width" })
+                @Html.ValidationMessageFor(m => m.SelectedSectors, "", new { @class = "help-block" })
             </div>
 
             <div class="form-group">
                 @Html.CheckBoxFor(m => m.AgreeToTerms, new { @class = "form-check-input" })
                 @Html.LabelFor(m => m.AgreeToTerms, new { @class = "form-check-label" })
+                @Html.ValidationMessageFor(m => m.AgreeToTerms, "", new { @class = "help-block" })
             </div>
 
-            <input type="submit" value="Save" />
+            <input type="submit" class="btn btn-primary" value="Save" />
         }
     </div>
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

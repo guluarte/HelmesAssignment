@@ -24,7 +24,7 @@ textarea {
 }
 
 #SelectedSectors {
-    width: 100%;
+    width: auto;
     height: 300px;
     max-width: initial;
 }

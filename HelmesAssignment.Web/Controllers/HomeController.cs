@@ -38,6 +38,7 @@ namespace HelmesAssignment.Web.Controllers
             var vm = await GetFormSubmissionViewModel(model.SelectedSectors);
             vm.Name = model.Name;
             vm.AgreeToTerms = model.AgreeToTerms;
+            string sessionId = System.Web.HttpContext.Current.Session.SessionID;
 
             if (ModelState.IsValid)
             {

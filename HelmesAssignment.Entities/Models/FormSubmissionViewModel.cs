@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -17,9 +16,9 @@ namespace HelmesAssignment.Entities.Models
         [Display(Name = "Sectors")]
         public IEnumerable<int> SelectedSectors { get; set; }
 
-        [Range(typeof(bool), "true", "true", ErrorMessage = "You must agree to terms")]
         [Display(Name = "Agree to terms")]
-        public Boolean AgreeToTerms { get; set; }
+        [Range(typeof(bool), "true", "true", ErrorMessage = "You must agree to terms")]
+        public bool AgreeToTerms { get; set; }
 
     }
 }

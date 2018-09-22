@@ -8,6 +8,7 @@ namespace HelmesAssignment.DataLayer
     {
         public DbSet<Sector> Sectors { get; set; }
         public DbSet<Submission> Submissions { get; set; }
+        public DbSet<SubmissionSector> SubmissionSectors { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

@@ -13,5 +13,6 @@ namespace HelmesAssignment.Entities.Models
         public Boolean AgreeToTerms { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public virtual ICollection<SubmissionSector> SubmissionSectors { get; set; }
     }
 }

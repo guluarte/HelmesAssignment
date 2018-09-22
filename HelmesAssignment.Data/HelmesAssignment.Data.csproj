@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201809210706203_BaseTables.Designer.cs">
       <DependentUpon>201809210706203_BaseTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809221921315_SubmissionSector.cs" />
+    <Compile Include="Migrations\201809221921315_SubmissionSector.Designer.cs">
+      <DependentUpon>201809221921315_SubmissionSector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -109,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809210706203_BaseTables.resx">
       <DependentUpon>201809210706203_BaseTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809221921315_SubmissionSector.resx">
+      <DependentUpon>201809221921315_SubmissionSector.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
