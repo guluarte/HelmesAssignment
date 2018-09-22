@@ -1,11 +1,10 @@
-﻿using HelmesAssignment.Entities.Models;
-using System.Collections.Generic;
+﻿using HelmesAssignment.Entities.Responses;
 using System.Threading.Tasks;
 
 namespace HelmesAssignment.Interfaces
 {
     public interface ISectorService
     {
-        Task<IEnumerable<SectorViewModel>> GetSectorsAsATree();
+        Task<GetSectorsAsATreeResponse> GetSectorsAsATree();
     }
 }

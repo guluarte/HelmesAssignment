@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelmesAssignment.Entities",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelmesAssignment.Data", "HelmesAssignment.Data\HelmesAssignment.Data.csproj", "{76F40374-C080-4EA9-B3FA-24F0C314826F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelmesAssignment.Constants", "HelmesAssignment.Constants\HelmesAssignment.Constants.csproj", "{F5A15308-54BD-425B-88FF-DFF1C6B56A00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{76F40374-C080-4EA9-B3FA-24F0C314826F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76F40374-C080-4EA9-B3FA-24F0C314826F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76F40374-C080-4EA9-B3FA-24F0C314826F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A15308-54BD-425B-88FF-DFF1C6B56A00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A15308-54BD-425B-88FF-DFF1C6B56A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A15308-54BD-425B-88FF-DFF1C6B56A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A15308-54BD-425B-88FF-DFF1C6B56A00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

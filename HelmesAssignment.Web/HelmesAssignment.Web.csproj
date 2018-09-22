@@ -310,6 +310,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HelmesAssignment.Constants\HelmesAssignment.Constants.csproj">
+      <Project>{f5a15308-54bd-425b-88ff-dff1c6b56a00}</Project>
+      <Name>HelmesAssignment.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelmesAssignment.Data\HelmesAssignment.Data.csproj">
       <Project>{76F40374-C080-4EA9-B3FA-24F0C314826F}</Project>
       <Name>HelmesAssignment.Data</Name>

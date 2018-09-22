@@ -1,4 +1,5 @@
 ﻿using HelmesAssignment.Entities.Models;
+using HelmesAssignment.Entities.Responses;
 using HelmesAssignment.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace HelmesAssignment.Services
             }
         }
 
-        public async Task<IEnumerable<SectorViewModel>> GetSectorsAsATree()
+        public async Task<GetSectorsAsATreeResponse> GetSectorsAsATree()
         {
             var sectorsTree = new List<SectorViewModel>();
 
@@ -55,7 +56,12 @@ namespace HelmesAssignment.Services
                 }
             }
 
-            return sectorsTree;
+            return new GetSectorsAsATreeResponse
+            {
+                Error = null,
+                Success = true,
+                Response = sectorsTree
+            };
 
         }
     }

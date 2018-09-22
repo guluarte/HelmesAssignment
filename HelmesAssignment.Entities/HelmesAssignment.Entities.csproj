@@ -190,12 +190,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FormSubmissionViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Sector.cs" />
     <Compile Include="Models\SectorViewModel.cs" />
     <Compile Include="Models\Submission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responses\BaseResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -206,6 +208,9 @@
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Requests\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
