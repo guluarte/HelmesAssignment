@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="IRepository.cs" />
     <Compile Include="ISectorService.cs" />
+    <Compile Include="ISubmissionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

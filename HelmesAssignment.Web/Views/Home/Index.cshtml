@@ -1,11 +1,12 @@
-﻿@model HelmesAssignment.Entities.Models.FormSubmissionViewModel
+﻿@using HelmesAssignment.Constants
+@model HelmesAssignment.Entities.Models.FormSubmissionViewModel
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div class="row">
     <div class="col-md-6">
-        @using (Html.BeginForm("Submit", "Home", FormMethod.Post))
+        @using (Html.BeginForm("Submit", Constants.HomeController, FormMethod.Post))
         {
             <h3>Please enter your name and pick the Sectors you are currently involved in.</h3>
             <div class="form-group">

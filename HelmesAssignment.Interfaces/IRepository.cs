@@ -16,13 +16,25 @@ namespace HelmesAssignment.Interfaces
 
     public interface IEditableRepository<T> : IRepository<T>
     {
-        Task Insert(T entity);
-        Task Delete(T entity);
+        Task InsertAsync(T entity);
+        Task InsertOrModifyAsync(T entity, Expression<Func<T, bool>> predicate);
+        Task DeleteASync(T entity);
     }
 
     public interface ISectorReadRepository : IRepository<Sector>
     {
         Task<IEnumerable<Sector>> GetSectors();
+        Task<List<Sector>> GetSectorsByIds(IEnumerable<int> sectors);
+    }
+
+    public interface ISubmissionEditRepository : IEditableRepository<Submission>
+    {
+        Task<Submission> GetSubmissionBySessionId(string sessionId);
+    }
+
+    public interface ISubmissionSectorEditRepository : IEditableRepository<SubmissionSector>
+    {
+        Task ClearSectorsFromSubmission(Submission submission);
     }
 
 }

@@ -1,14 +1,14 @@
 using HelmesAssignment.DataLayer;
-using HelmesAssignment.Entities.Models;
-using HelmesAssignment.Entities.Repositories;
 using HelmesAssignment.Interfaces;
 using HelmesAssignment.Services;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using HelmesAssignment.Data.Repositories;
+
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+
 using System;
 using System.Web;
+
 using Unity;
 using Unity.AspNet.Mvc;
 using Unity.Injection;
@@ -61,8 +61,13 @@ namespace HelmesAssignment.Web
             // container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new InjectionConstructor(typeof(ApplicationDbContext)));
 
             container.RegisterType<ISectorReadRepository, SectorReadRepository>();
+            container.RegisterType<ISubmissionEditRepository, SubmissionEditRepository>();
+            container.RegisterType<ISubmissionSectorEditRepository, SubmissionSectorEditRepository>();
+
+
             container.RegisterType<ISectorService, SectorsService>();
-            
+            container.RegisterType<ISubmissionService, SubmissionService>();
+
         }
     }
 }

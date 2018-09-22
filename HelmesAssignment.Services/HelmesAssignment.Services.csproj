@@ -30,7 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,8 +50,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SectorsService.cs" />
+    <Compile Include="SubmissionService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HelmesAssignment.Data\HelmesAssignment.Data.csproj">
+      <Project>{76f40374-c080-4ea9-b3fa-24f0c314826f}</Project>
+      <Name>HelmesAssignment.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelmesAssignment.Entities\HelmesAssignment.Entities.csproj">
       <Project>{98B33BBD-352E-40C8-94BB-8F8ACF1DCA12}</Project>
       <Name>HelmesAssignment.Entities</Name>
@@ -52,6 +65,10 @@
       <Project>{8C085698-F23A-4561-A2E1-7916332FC8A7}</Project>
       <Name>HelmesAssignment.Interfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

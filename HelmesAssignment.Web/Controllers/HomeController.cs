@@ -1,22 +1,29 @@
 ﻿using HelmesAssignment.Entities.Models;
-using HelmesAssignment.Entities.Responses;
 using HelmesAssignment.Interfaces;
+
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
+
 using System.Web.Mvc;
+using HelmesAssignment.Entities.Requests;
 
 namespace HelmesAssignment.Web.Controllers
 {
     public class HomeController : BaseController
     {
         private readonly ISectorService _sectorService;
+        private readonly ISubmissionService _submissionService;
 
-        public HomeController(ISectorService sectorService)
+        public HomeController(
+            ISectorService sectorService,
+            ISubmissionService submissionService
+            )
         {
             _sectorService = sectorService;
+            _submissionService = submissionService;
         }
 
         [HttpGet]
@@ -36,14 +43,22 @@ namespace HelmesAssignment.Web.Controllers
         public async Task<ActionResult> Submit(FormSubmissionViewModel model)
         {
             var vm = await GetFormSubmissionViewModel(model.SelectedSectors);
+            vm.SelectedSectors = model.SelectedSectors;
             vm.Name = model.Name;
             vm.AgreeToTerms = model.AgreeToTerms;
-            string sessionId = System.Web.HttpContext.Current.Session.SessionID;
 
             if (ModelState.IsValid)
             {
- 
+                var createRequest = new SubmissionCreateOrUpdateRequest
+                {
+                    SessionId = System.Web.HttpContext.Current.Session.SessionID,
+                    FormSubmissionViewModel = vm
+                };
+
+                var response = await _submissionService.CreateOrUpdateSubmission(createRequest);
+
             }
+
             TempData["FormSubmissionViewModel"] = vm;
             return RedirectToAction("Index", "Home");
         }

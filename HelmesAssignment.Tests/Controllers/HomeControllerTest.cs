@@ -17,7 +17,7 @@ namespace HelmesAssignment.Tests.Controllers
         public async Task Index()
         {
             // Arrange
-            HomeController controller = new HomeController(null);
+            HomeController controller = new HomeController(null, null);
 
             // Act
             ViewResult result = await controller.Index() as ViewResult;
