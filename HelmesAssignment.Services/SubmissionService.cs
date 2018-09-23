@@ -33,11 +33,21 @@ namespace HelmesAssignment.Services
             _sectorReadRepository = sectorReadRepository;
         }
 
+        /// <summary>
+        /// Returns the submission by the session id or null
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <returns></returns>
         public async Task<Submission> GetSubmissionBySessionId(string sessionId)
         {
             return await _submissionEditRepository.GetSubmissionBySessionId(sessionId);
         }
 
+        /// <summary>
+        /// Creates or updates a submission
+        /// </summary>
+        /// <param name="request">SubmissionCreateOrUpdateRequest</param>
+        /// <returns></returns>
         public async Task<SubmissionCreateOrUpdateResponse> CreateOrUpdateSubmission(SubmissionCreateOrUpdateRequest request)
         {
             using (DbContextTransaction dbTran = _applicationDbContext.Database.BeginTransaction())

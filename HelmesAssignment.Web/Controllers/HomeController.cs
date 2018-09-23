@@ -26,6 +26,10 @@ namespace HelmesAssignment.Web.Controllers
             _submissionService = submissionService;
         }
 
+        /// <summary>
+        /// Clears the session and the session cookie
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult New()
         {
@@ -35,6 +39,10 @@ namespace HelmesAssignment.Web.Controllers
             return RedirectToAction(Constants.Constants.HomeIndexAction, Constants.Constants.HomeController);
         }
 
+        /// <summary>
+        /// Main page, displays the submission form
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult> Index()
         {
@@ -61,6 +69,12 @@ namespace HelmesAssignment.Web.Controllers
             return View(vm);
         }
 
+        /// <summary>
+        /// Saves the submission, if there is an error shows the form with the validation
+        /// errors
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> Submit(FormSubmissionViewModel model)
         {
@@ -105,6 +119,11 @@ namespace HelmesAssignment.Web.Controllers
             return RedirectToAction(Constants.Constants.HomeIndexAction, Constants.Constants.HomeController);
         }
 
+        /// <summary>
+        /// Builds the form view model
+        /// </summary>
+        /// <param name="selectedSectors"></param>
+        /// <returns></returns>
         private async Task<FormSubmissionViewModel> GetFormSubmissionViewModel(IEnumerable<int> selectedSectors = null)
         {
             var getSectorsAsATreeResponse = await _sectorService.GetSectorsAsATree();

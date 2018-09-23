@@ -38,6 +38,11 @@ namespace HelmesAssignment.Services
             }
         }
 
+        /// <summary>
+        /// Generates a sector tree assigning a deep depending
+        /// of how far are from the root sector
+        /// </summary>
+        /// <returns></returns>
         public async Task<GetSectorsAsATreeResponse> GetSectorsAsATree()
         {
             var sectorsTree = new List<SectorViewModel>();
