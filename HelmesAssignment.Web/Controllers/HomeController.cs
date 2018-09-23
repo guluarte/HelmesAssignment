@@ -1,13 +1,13 @@
 ﻿using HelmesAssignment.Entities.Models;
 using HelmesAssignment.Interfaces;
 
-using System;
 using System.Collections.Generic;
 
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using HelmesAssignment.Constants;
 using HelmesAssignment.Entities.Requests;
 
 namespace HelmesAssignment.Web.Controllers
@@ -83,7 +83,7 @@ namespace HelmesAssignment.Web.Controllers
                 {
                     TempData[Constants.Constants.FlashMessage] = new FlashMessage
                     {
-                        Message = Constants.StringResources.FormSavedSuccessMessage,
+                        Message = StringResources.FormSavedSuccessMessage,
                         MessageType = MessageType.Success
                     };
                 }
@@ -91,7 +91,7 @@ namespace HelmesAssignment.Web.Controllers
                 {
                     TempData[Constants.Constants.FlashMessage] = new FlashMessage
                     {
-                        Message = Constants.StringResources.FormSavedErrorMessage,
+                        Message = StringResources.FormSavedErrorMessage,
                         MessageType = MessageType.Danger
                     };
 
