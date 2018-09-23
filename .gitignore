@@ -76,5 +76,3 @@ _[Ss]cripts
 .vs/config/applicationhost.config
 .vs/HelmesAssignment/v15/Server/sqlite3/db.lock
 .vs/*
-HelmesAssignment.Web/App_Data/aspnet-HelmesAssignment.Web-20180920110057_log.ldf,HelmesAssignment.Web/App_Data/aspnet-HelmesAssignment.Web-20180920110057.mdf
-HelmesAssignment.Web/App_Data/*

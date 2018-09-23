@@ -1,14 +1,19 @@
 ﻿@using HelmesAssignment.Constants
+@using HelmesAssignment.Entities.Models
+@using HelmesAssignment.Web.Helpers
 @model HelmesAssignment.Entities.Models.FormSubmissionViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Form";
 }
 
 <div class="row">
     <div class="col-md-6">
-        @using (Html.BeginForm("Submit", Constants.HomeController, FormMethod.Post))
+        @using (Html.BeginForm(Constants.HomeSubmitAction, Constants.HomeController, FormMethod.Post))
         {
-            <h3>Please enter your name and pick the Sectors you are currently involved in.</h3>
+            <h3>@StringResources.FormSubTitle</h3>
+
+            @Html.Alert(TempData[Constants.FlashMessage] as FlashMessage)
+
             <div class="form-group">
                 @Html.LabelFor(m => m.Name)
                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
@@ -27,7 +32,7 @@
                 @Html.ValidationMessageFor(m => m.AgreeToTerms, "", new { @class = "help-block" })
             </div>
 
-            <input type="submit" class="btn btn-primary" value="Save" />
+            <input type="submit" class="btn btn-primary" value="@StringResources.FormSave" />
         }
     </div>
 </div>

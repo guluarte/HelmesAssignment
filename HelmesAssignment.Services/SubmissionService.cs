@@ -33,13 +33,18 @@ namespace HelmesAssignment.Services
             _sectorReadRepository = sectorReadRepository;
         }
 
+        public async Task<Submission> GetSubmissionBySessionId(string sessionId)
+        {
+            return await _submissionEditRepository.GetSubmissionBySessionId(sessionId);
+        }
+
         public async Task<SubmissionCreateOrUpdateResponse> CreateOrUpdateSubmission(SubmissionCreateOrUpdateRequest request)
         {
             using (DbContextTransaction dbTran = _applicationDbContext.Database.BeginTransaction())
             {
                 try
                 {
-                    var currentSubmission = await _submissionEditRepository.GetSubmissionBySessionId(request.SessionId);
+                    var currentSubmission = await GetSubmissionBySessionId(request.SessionId);
 
                     var updatedAt = DateTime.Now;
 

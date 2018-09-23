@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using HelmesAssignment.Constants
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Helmes Assignment</title>
+    <title>@ViewBag.Title - @StringResources.MainTitle</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -17,15 +18,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Helmes Assignment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(StringResources.MainTitle, Constants.HomeIndexAction, Constants.HomeController, new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                @*<ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>*@
-                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink(StringResources.NewSession, Constants.HomeNewAction, Constants.HomeController)</li>
+
+                </ul>
             </div>
         </div>
     </div>
@@ -33,7 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Helmes Assignment</p>
+            <p>&copy; @DateTime.Now.Year - @StringResources.MainTitle</p>
         </footer>
     </div>
 

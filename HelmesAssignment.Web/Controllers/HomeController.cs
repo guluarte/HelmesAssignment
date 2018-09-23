@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Web;
 using System.Web.Mvc;
 using HelmesAssignment.Entities.Requests;
 
@@ -20,20 +20,42 @@ namespace HelmesAssignment.Web.Controllers
         public HomeController(
             ISectorService sectorService,
             ISubmissionService submissionService
-            )
+        )
         {
             _sectorService = sectorService;
             _submissionService = submissionService;
         }
 
         [HttpGet]
+        public ActionResult New()
+        {
+            Session.Abandon();
+            Session.RemoveAll();
+            Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+            return RedirectToAction(Constants.Constants.HomeIndexAction, Constants.Constants.HomeController);
+        }
+
+        [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var vm = TempData["FormSubmissionViewModel"] as FormSubmissionViewModel;
+            var vm = TempData[Constants.Constants.FormSubmissionViewModel] as FormSubmissionViewModel;
 
             if (vm == null)
             {
-                vm = await GetFormSubmissionViewModel();
+                var currentSessionSubmission = await _submissionService.GetSubmissionBySessionId(GetCurrentSessionId);
+
+                if (currentSessionSubmission != null)
+                {
+                    var selectedSectorsId = currentSessionSubmission.SubmissionSectors.Select(ss => ss.Sector.ID);
+                    vm = await GetFormSubmissionViewModel(selectedSectorsId);
+
+                    vm.Name = currentSessionSubmission.Name;
+                    vm.AgreeToTerms = currentSessionSubmission.AgreeToTerms;
+                }
+                else
+                {
+                    vm = await GetFormSubmissionViewModel();
+                }
             }
 
             return View(vm);
@@ -51,16 +73,36 @@ namespace HelmesAssignment.Web.Controllers
             {
                 var createRequest = new SubmissionCreateOrUpdateRequest
                 {
-                    SessionId = System.Web.HttpContext.Current.Session.SessionID,
+                    SessionId = GetCurrentSessionId,
                     FormSubmissionViewModel = vm
                 };
 
                 var response = await _submissionService.CreateOrUpdateSubmission(createRequest);
 
+                if (response.Success)
+                {
+                    TempData[Constants.Constants.FlashMessage] = new FlashMessage
+                    {
+                        Message = Constants.StringResources.FormSavedSuccessMessage,
+                        MessageType = MessageType.Success
+                    };
+                }
+                else
+                {
+                    TempData[Constants.Constants.FlashMessage] = new FlashMessage
+                    {
+                        Message = Constants.StringResources.FormSavedErrorMessage,
+                        MessageType = MessageType.Danger
+                    };
+
+                }
+
+                return RedirectToAction(Constants.Constants.HomeIndexAction, Constants.Constants.HomeController);
+
             }
 
-            TempData["FormSubmissionViewModel"] = vm;
-            return RedirectToAction("Index", "Home");
+            TempData[Constants.Constants.FormSubmissionViewModel] = vm;
+            return RedirectToAction(Constants.Constants.HomeIndexAction, Constants.Constants.HomeController);
         }
 
         private async Task<FormSubmissionViewModel> GetFormSubmissionViewModel(IEnumerable<int> selectedSectors = null)
@@ -76,11 +118,12 @@ namespace HelmesAssignment.Web.Controllers
 
             formattedSectors.ForEach(s =>
             {
-                var prependIdent = new String('\xA0', s.Deep * 6);
+                // inserts &nbsp;
+                var prependIdent = new string('\xA0', s.Deep * 6);
                 s.Name = $"{prependIdent}{s.Name}";
             });
 
-            return new FormSubmissionViewModel()
+            return new FormSubmissionViewModel
             {
                 AgreeToTerms = false,
                 Name = string.Empty,
