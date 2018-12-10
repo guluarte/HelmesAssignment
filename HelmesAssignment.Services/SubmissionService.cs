@@ -9,7 +9,7 @@ using HelmesAssignment.DataLayer;
 using HelmesAssignment.Entities.Models;
 using HelmesAssignment.Entities.Responses;
 using HelmesAssignment.Interfaces;
-
+using System.Transactions;
 
 namespace HelmesAssignment.Services
 {
@@ -50,7 +50,7 @@ namespace HelmesAssignment.Services
         /// <returns></returns>
         public async Task<SubmissionCreateOrUpdateResponse> CreateOrUpdateSubmission(SubmissionCreateOrUpdateRequest request)
         {
-            using (DbContextTransaction dbTran = _applicationDbContext.Database.BeginTransaction())
+            using (TransactionScope scope = new TransactionScope())
             {
                 try
                 {
@@ -92,7 +92,7 @@ namespace HelmesAssignment.Services
 
                     await _submissionEditRepository.InsertOrModifyAsync(currentSubmission, s => s.ID == currentSubmission.ID);
 
-                    dbTran.Commit();
+                    scope.Complete();
 
                     return new SubmissionCreateOrUpdateResponse
                     {
@@ -101,9 +101,8 @@ namespace HelmesAssignment.Services
                         Response = currentSubmission
                     };
                 }
-                catch (DbEntityValidationException ex)
+                catch (TransactionAbortedException ex)
                 {
-                    dbTran.Rollback();
                     throw;
                 }
             }

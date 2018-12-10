@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HelmesAssignment.Web;
-using HelmesAssignment.Web.Controllers;
+
 using System.Threading.Tasks;
 using HelmesAssignment.Interfaces;
 using Moq;
+
 using HelmesAssignment.Services;
 using HelmesAssignment.Entities.Models;
 
-namespace HelmesAssignment.Tests.Controllers
+namespace HelmesAssignment.Tests.Services
 {
     [TestClass]
     public class SectorServiceTest
     {
-        public SectorsService SectorsService { get; set; }
+        private SectorsService SectorsService { get; set; }
+
         [TestInitialize]
         public void TestInit()
         {

@@ -96,7 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\SectorServiceTest.cs" />
+    <Compile Include="Services\SectorServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

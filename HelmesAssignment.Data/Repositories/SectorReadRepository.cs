@@ -15,7 +15,10 @@ namespace HelmesAssignment.Data.Repositories
 
         public async Task<IEnumerable<Sector>> GetSectors()
         {
-            return await _dbContext.Sectors.OrderBy(s => s.Name).ToListAsync();
+            return await _dbContext.Sectors
+                   .Include(s => s.Children)
+                   .OrderBy(s => s.Name)
+                   .ToListAsync();
         }
 
         public async Task<List<Sector>> GetSectorsByIds(IEnumerable<int> sectors)
